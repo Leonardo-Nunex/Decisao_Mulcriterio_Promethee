@@ -1,8 +1,14 @@
 
-import matplotlib.pyplot as plt # Definição da área plotagem "figura" de impressão do gráfico (pyplot)
+# Filename: PROMETHEE_Final_Rank_Figure.py
+# Description: Optional module to plot the
+# results of PROMETHEE method
+# Authors: Papathanasiou, J. & Ploskas, N.
+
+import matplotlib.pyplot as plt
 from graphviz import Digraph
 from numpy import *
-# Gráfico da classificação final
+
+# Plot final rank figure
 def graph(flows, b):
     """ flows is the matrix with the net flows, and b
     is a string describing the net flow
@@ -46,13 +52,13 @@ def plot(a, b):
     frame1.axes.get_xaxis().set_visible(False)
     plt.axis([0, 0.7, min(flows) - 0.05,
         max(flows) + 0.05])
-    plt.title("RESULTADOS"+ b)
-    plt.ylabel("FLUXO")
+    plt.title(b + " results")
+    plt.ylabel("Flows")
     plt.legend()
     plt.grid(True)
     z1 = []
     for i in range(size(flows, 0)):
-        z1.append('   (PROJETOS ' + str(i + 1) + ')')
+        z1.append('   (Action ' + str(i + 1) + ')')
     z = [str(a) + b for a, b in zip(flows, z1)]
     for X, Y, Z in zip(yaxes_list, flows, z):
         plt.annotate('{}'.format(Z), xy = (X, Y),
